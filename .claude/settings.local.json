@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/martinkeller/Downloads/**)",
+      "Bash(python3 -)",
+      "Bash(npm -v)",
+      "Bash(gh --version)",
+      "Read(//opt/homebrew/bin/**)",
+      "Read(//Users/martinkeller/.nvm/versions/**)",
+      "Bash(git --version)"
+    ]
+  }
+}

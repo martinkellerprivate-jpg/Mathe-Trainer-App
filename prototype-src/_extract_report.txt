@@ -1,0 +1,21 @@
+Quelle: /Users/martinkeller/Downloads/Mathe-Trainer (offline).html
+Assets im Manifest: 17
+
+APP   275d800b     16150B  sha256=8adc17ae3952  -> prototype-src/01_engine_model.jsx  (Datenmodell, Mathe-Engine, Speicher)
+APP   5190ac75     24697B  sha256=2bba6e71080d  -> prototype-src/02_child_app.jsx  (Kind-App: Home, Welt, Modus, Uebung, Ergebnis)
+APP   6f048901      5298B  sha256=29799d1e9962  -> prototype-src/03_reward.jsx  (Belohnung: Ergebnis, Level-Up, Diplome, Preise)
+APP   acb87385     26306B  sha256=97cbeb440bad  -> prototype-src/04_parent.jsx  (Eltern-Bereich: PIN, Editor, Preise, Settings)
+APP   da8a250d      5281B  sha256=3cb877c3663c  -> prototype-src/05_modals.jsx  (Pop-ups: Druck + Lerntipps)
+APP   72d212c2      6073B  sha256=c2c8d3d182f7  -> prototype-src/06_root_app.jsx  (Root-App: Navigation, Belohnungs-Logik, Persistenz)
+FONT  736a7ab2      8776B  Fredoka 400  -> public/fonts/Fredoka-400.woff2
+FONT  004675ba      4564B  Fredoka 400  -> public/fonts/Fredoka-400_1.woff2
+FONT  61d633cd     29704B  Fredoka 400  -> public/fonts/Fredoka-400_2.woff2
+FONT  5247ef30     28908B  Nunito 400  -> public/fonts/Nunito-400.woff2
+FONT  743dfc85     20780B  Nunito 400  -> public/fonts/Nunito-400_1.woff2
+FONT  d0808b84     13040B  Nunito 400  -> public/fonts/Nunito-400_2.woff2
+FONT  7e71c66f     35464B  Nunito 400  -> public/fonts/Nunito-400_3.woff2
+FONT  9727269c     39152B  Nunito 400  -> public/fonts/Nunito-400_4.woff2
+VEND  559edbd1    109931B  react.development.js  (nicht extrahiert; via npm)
+VEND  f6229d67   1080227B  react-dom (vendor)  (nicht extrahiert; via npm)
+VEND  25a349bc   3137752B  babel-standalone (vendor)  (nicht extrahiert; via npm)
+TMPL  template     50620B  -> prototype-src/_template.html
