@@ -664,11 +664,11 @@ function ParentSettings({ state, setState }) {
         </div>
         <div className="reset-row">
           <div><b>Lernstand &amp; Wiederholungen</b><span>Gelöste Rechnungen (→ Level 1) + Beherrschungs-Boxen + Statistik.</span></div>
-          <button className="btn-danger sm" onClick={() => { if (confirm(`Lernstand von ${state.child.name} zurücksetzen? (Level, Mastery, Statistik)`)) setState(st => ({ ...st, child: { ...st.child, totalCorrect: 0, totalWrong: 0, totalSeries: 0, bossWins: 0, perfectSeries: 0, opStats: {}, history: [], lessonStats: {}, mastery: {}, adaptive: {}, streak: 0, lastPlayedDay: null } })); }}>Zurücksetzen</button>
+          <button className="btn-danger sm" onClick={() => { if (confirm(`Lernstand von ${state.child.name} zurücksetzen? (Level, Mastery, Statistik)`)) setState(st => ({ ...st, child: { ...st.child, totalCorrect: 0, totalWrong: 0, totalSeries: 0, bossWins: 0, perfectSeries: 0, opStats: {}, history: [], lessonStats: {}, mastery: {}, adaptive: {}, streak: 0, lastPlayedDay: null, practiceDays: 0 } })); }}>Zurücksetzen</button>
         </div>
         <div className="reset-row">
           <div><b>Alles zurücksetzen</b><span>Beides zusammen.</span></div>
-          <button className="btn-danger sm" onClick={() => { if (confirm(`ALLES von ${state.child.name} zurücksetzen? (Belohnungen + Lernstand)`)) setState(st => ({ ...st, child: { ...st.child, coins: 0, diplomas: [], totalCorrect: 0, totalWrong: 0, totalSeries: 0, bossWins: 0, perfectSeries: 0, opStats: {}, history: [], lessonStats: {}, mastery: {}, adaptive: {}, streak: 0, lastPlayedDay: null } })); }}>Alles</button>
+          <button className="btn-danger sm" onClick={() => { if (confirm(`ALLES von ${state.child.name} zurücksetzen? (Belohnungen + Lernstand)`)) setState(st => ({ ...st, child: { ...st.child, coins: 0, diplomas: [], totalCorrect: 0, totalWrong: 0, totalSeries: 0, bossWins: 0, perfectSeries: 0, opStats: {}, history: [], lessonStats: {}, mastery: {}, adaptive: {}, streak: 0, lastPlayedDay: null, practiceDays: 0 } })); }}>Alles</button>
         </div>
       </div>
     </div>

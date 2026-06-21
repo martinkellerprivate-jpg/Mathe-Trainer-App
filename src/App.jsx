@@ -47,7 +47,7 @@ function App() {
       id: "__due", name: "Wiederholung",
       ops: ["add", "sub", "mul", "div"], rangeMax: 100, carry: true, count: n,
       difficulty: 2, inputMode: "type", timerPerQ: 0, timerPerSerie: 0,
-      randomize: true, autoAdvanceSecs: 3, repeat: true, repeatScope: "all",
+      randomize: true, autoAdvanceSecs: 3, repeat: true, repeatScope: "all", dueOnly: true,
     });
   }
   function startMode(m) {

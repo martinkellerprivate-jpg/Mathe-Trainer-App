@@ -22,13 +22,13 @@ input{font-family:inherit;}
 /* CR #1: fester Telefon-Rahmen (Desktop nicht responsiv, Höhe auf Fenster gedeckelt). */
 .app-root{
   width:var(--appw);height:min(var(--apph), 100dvh);max-width:100vw;background:var(--paper);
-  position:relative;overflow:hidden;box-shadow:0 0 60px oklch(0 0 0/.3);
+  position:relative;overflow:hidden;box-shadow:0 0 60px oklch(0 0 0/.3);border-radius:30px;
 }
 /* Innerer Scroll-Layer: nur der Inhalt scrollt; Overlays liegen außerhalb (am Rahmen). */
 .app-scroll{height:100%;overflow-y:auto;overflow-x:hidden;}
 .screen-pad{padding:22px 18px 30px;min-height:100%;display:flex;flex-direction:column;}
 /* Mobile: Rahmen = ganzes Display. */
-@media(max-width:430px){.app-root{width:100vw;height:100dvh;box-shadow:none;}}
+@media(max-width:430px){.app-root{width:100vw;height:100dvh;box-shadow:none;border-radius:0;}}
 
 /* ---------- Buttons ---------- */
 .btn-primary{background:var(--sun);color:white;font-family:"Fredoka";font-weight:600;font-size:1.05rem;
@@ -82,8 +82,8 @@ input{font-family:inherit;}
 .mb-text b{color:oklch(0.45 0.14 55);}
 .motiv-banner.reached .mb-text b{color:oklch(0.40 0.13 152);}
 .mb-go{font-family:"Fredoka";font-weight:700;font-size:1.4rem;color:var(--ink-soft);flex:none;}
-/* Motivations-Popup */
-.motiv-pop{background:var(--paper);width:100%;max-width:var(--appw);border-radius:28px 28px 0 0;padding:28px 24px 26px;text-align:center;animation:slideUp .25s;display:flex;flex-direction:column;align-items:center;gap:8px;}
+/* Motivations-Popup — frei schwebende Karte im Frame (BUG 1) */
+.motiv-pop{background:var(--paper);width:calc(100% - 28px);margin:14px;max-height:calc(100% - 28px);overflow-y:auto;border-radius:24px;border:1.5px solid var(--line);box-shadow:var(--shadow);padding:26px 22px;text-align:center;animation:slideUp .25s;display:flex;flex-direction:column;align-items:center;gap:8px;}
 .motiv-emoji{font-size:3.4rem;animation:pop .4s;}
 .motiv-pop h2{font-size:1.7rem;line-height:1.18;}
 .motiv-pop p{color:var(--ink-soft);max-width:30ch;}
@@ -123,7 +123,8 @@ input{font-family:inherit;}
 .ha b{font-size:1.5rem;}
 
 /* ============ WORLD PICKER ============ */
-.sheet-modal{position:absolute;inset:0;background:oklch(0 0 0/.45);display:flex;align-items:flex-end;justify-content:center;z-index:40;}
+.sheet-modal{position:absolute;inset:0;background:oklch(0 0 0/.45);display:flex;align-items:flex-end;justify-content:center;z-index:40;padding:0;}
+.sheet-modal.top{align-items:flex-start;} /* BUG 1: Popup auch oben ankerbar */
 .sheet-card{background:var(--paper);width:100%;max-width:var(--appw);border-radius:28px 28px 0 0;padding:14px 18px 26px;animation:slideUp .25s;}
 @keyframes slideUp{from{transform:translateY(40px);opacity:.5;}to{transform:none;opacity:1;}}
 .sheet-handle{width:44px;height:5px;border-radius:99px;background:var(--line);margin:0 auto 14px;}

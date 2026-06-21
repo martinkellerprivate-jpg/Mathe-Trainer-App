@@ -338,6 +338,12 @@ function buildSeries(lesson, seed, progress) {
     const ops = lesson.repeatScope === "all" ? null : (lesson.ops && lesson.ops.length ? lesson.ops : null);
     const pool = duePool(mastery, now, ops, count);
     out = pool.map((sk) => dressProblem({ ...sk }, L));
+    // Bugfix: Ist NICHTS fällig, soll eine vom Kind direkt gestartete Wiederholungs-Lektion
+    // nicht in einem Leerzustand enden, sondern frische Aufgaben bringen. Nur die synthetische
+    // „Heute fällig"-Session (dueOnly) bleibt leer (sie startet ohnehin nur, wenn etwas fällig ist).
+    if (out.length === 0 && !lesson.dueOnly) {
+      for (let i = 0; i < count; i++) out.push(buildProblem(L));
+    }
   } else {
     for (let i = 0; i < count; i++) out.push(buildProblem(L));
     if (lesson.mixDue) {
