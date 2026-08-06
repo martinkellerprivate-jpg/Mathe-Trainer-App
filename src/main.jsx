@@ -39,9 +39,15 @@ function Root() {
 
   const [session, setSession] = useState(undefined); // undefined = lädt
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => setSession(data.session));
+    let settled = false;
+    const finish = (s) => { if (!settled) { settled = true; setSession(s); } };
+    // Backend nicht erreichbar / abgelaufenes Token -> nicht ewig laden, sondern zur Anmeldung.
+    supabase.auth.getSession()
+      .then(({ data }) => finish(data.session ?? null))
+      .catch(() => finish(null));
     const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => setSession(s));
-    return () => sub.subscription.unsubscribe();
+    const t = setTimeout(() => finish(null), 8000); // Sicherheitsnetz gegen hängendes getSession
+    return () => { sub.subscription.unsubscribe(); clearTimeout(t); };
   }, []);
 
   if (session === undefined) return <Splash />;
