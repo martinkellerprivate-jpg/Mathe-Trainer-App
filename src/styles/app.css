@@ -40,7 +40,10 @@ input{font-family:inherit;}
      verdeckt. max() nimmt den echten Inset, sonst den Fallback (räumt Island frei). */
   :root{--sat:max(env(safe-area-inset-top,0px),44px);}
   /* Kein dunkler Rand mehr im Home-Indicator-Bereich: App-Farbe bündig bis unten. */
-  html,body{background:var(--paper);}}
+  html,body{background:var(--paper);}
+  /* Inhalt bündig bis zum unteren Rand nutzen: der obere Island-Abstand macht den
+     Screen sonst zu hoch -> unten toter/abgeschnittener Streifen. */
+  .screen-pad{padding-bottom:10px;}}
 
 /* ---------- Buttons ---------- */
 .btn-primary{background:var(--sun);color:white;font-family:"Fredoka";font-weight:600;font-size:1.05rem;
