@@ -8,9 +8,9 @@
   --w-accent:var(--gold);
   --r:22px; --appw:400px; --apph:860px; --shadow:0 2px 6px oklch(0.27 0.02 265/.08),0 16px 40px oklch(0.27 0.02 265/.12);
   --shadow-sm:0 1px 2px oklch(0.27 0.02 265/.06),0 6px 16px oklch(0.27 0.02 265/.07);
-  /* iOS Safe-Area: unter Dynamic Island / Statusleiste bzw. Home-Indicator nicht
-     klickbar. env() ist auf Desktop 0 -> dort keine Wirkung. */
-  --sat:env(safe-area-inset-top,0px); --sab:env(safe-area-inset-bottom,0px);
+  /* iOS Safe-Area oben: Bedienelemente sonst unter Dynamic Island / Statusleiste
+     nicht klickbar. env() ist auf Desktop 0 -> dort keine Wirkung. */
+  --sat:env(safe-area-inset-top,0px);
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 html,body{height:100%;}
@@ -29,9 +29,13 @@ input{font-family:inherit;}
 }
 /* Innerer Scroll-Layer: nur der Inhalt scrollt; Overlays liegen außerhalb (am Rahmen). */
 .app-scroll{height:100%;overflow-y:auto;overflow-x:hidden;}
-.screen-pad{padding:calc(22px + var(--sat)) 18px calc(30px + var(--sab));min-height:100%;display:flex;flex-direction:column;}
+.screen-pad{padding:calc(22px + var(--sat)) 18px 30px;min-height:100%;display:flex;flex-direction:column;}
 /* Mobile: Rahmen = ganzes Display. */
-@media(max-width:430px){.app-root{width:100vw;height:100dvh;box-shadow:none;border-radius:0;}}
+@media(max-width:430px){.app-root{width:100vw;height:100dvh;box-shadow:none;border-radius:0;}
+  /* Auf dem Telefon oberen Inset erzwingen: iOS meldet env(safe-area-inset-top)
+     im PWA-/Safari-Standalone teils als 0, dann bliebe die Dynamic Island (~59px)
+     verdeckt. max() nimmt den echten Inset, sonst den Fallback (räumt Island frei). */
+  :root{--sat:max(env(safe-area-inset-top,0px),44px);}}
 
 /* ---------- Buttons ---------- */
 .btn-primary{background:var(--sun);color:white;font-family:"Fredoka";font-weight:600;font-size:1.05rem;
@@ -126,7 +130,7 @@ input{font-family:inherit;}
 .ha b{font-size:1.5rem;}
 
 /* ============ WORLD PICKER ============ */
-.sheet-modal{position:absolute;inset:0;background:oklch(0 0 0/.45);display:flex;align-items:flex-end;justify-content:center;z-index:40;padding:var(--sat) 0 var(--sab);}
+.sheet-modal{position:absolute;inset:0;background:oklch(0 0 0/.45);display:flex;align-items:flex-end;justify-content:center;z-index:40;padding:var(--sat) 0 0;}
 .sheet-modal.top{align-items:flex-start;} /* BUG 1: Popup auch oben ankerbar */
 .sheet-card{background:var(--paper);width:100%;max-width:var(--appw);border-radius:28px 28px 0 0;padding:14px 18px 26px;animation:slideUp .25s;}
 @keyframes slideUp{from{transform:translateY(40px);opacity:.5;}to{transform:none;opacity:1;}}
