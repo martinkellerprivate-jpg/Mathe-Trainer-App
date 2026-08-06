@@ -34,7 +34,10 @@ input{font-family:inherit;}
 .app-scroll{height:100%;overflow-y:auto;overflow-x:hidden;}
 .screen-pad{padding:22px 18px 30px;min-height:100%;display:flex;flex-direction:column;position:relative;}
 /* Mobile: Rahmen = ganzes Display. */
-@media(max-width:430px){.app-root{position:fixed;inset:0;width:auto;height:auto;box-shadow:none;border-radius:0;}
+/* Gilt für schmale Screens UND immer, wenn die App als installierte PWA läuft
+   (display-mode:standalone) — sonst greift bei breiten iPhones (>430px, z.B. Pro Max)
+   keine der Mobil-Regeln und der body scheint unten durch. */
+@media(max-width:500px),(display-mode:standalone){.app-root{position:fixed;inset:0;width:auto;height:auto;box-shadow:none;border-radius:0;}
   /* Auf dem Telefon oberen Inset erzwingen: iOS meldet env(safe-area-inset-top)
      im PWA-/Safari-Standalone teils als 0, dann bliebe die Dynamic Island (~59px)
      verdeckt. max() nimmt den echten Inset, sonst den Fallback (räumt Island frei). */
